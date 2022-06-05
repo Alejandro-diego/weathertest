@@ -61,8 +61,12 @@ class _MyHomePageState extends State<MyHomePage> {
     Location location = Location();
     await location.getCurrentLocation();
 
-    final response = await http.get(Uri.parse(
-        'http://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&APPID=f3a6f2a2ee5dffc5949de6573c73f232&units=metric'));
+    final response = await http.get(
+        Uri.parse(
+            'http://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&APPID=f3a6f2a2ee5dffc5949de6573c73f232&units=metric'),
+        headers: {
+         
+        });
 
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
