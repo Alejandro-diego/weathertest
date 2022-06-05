@@ -6,7 +6,6 @@ import 'dart:async';
 import 'package:weathertest/model/data.dart';
 import 'package:weathertest/service/location.dart';
 
-
 import '../widget/container.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -43,9 +42,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   location: snapshot.data!.name,
                   temp: snapshot.data!.temp,
                   humedad: snapshot.data!.humedad,
-                  description: snapshot.data!.description ,
+                  description: snapshot.data!.description,
                 ),
-           
               ],
             );
           } else if (snapshot.hasError) {
