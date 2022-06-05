@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final response = await http.get(
         Uri.parse(
-            'http://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&APPID=f3a6f2a2ee5dffc5949de6573c73f232&units=metric'),
+            'https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&APPID=f3a6f2a2ee5dffc5949de6573c73f232&units=metric'),
         headers: {
 
        
