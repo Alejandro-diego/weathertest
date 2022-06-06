@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:weather/weather.dart';
 import 'package:weathertest/service/location.dart';
+
+import '../model/data.dart';
+import '../widget/container.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -12,11 +17,20 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   late String key = "f3a6f2a2ee5dffc5949de6573c73f232";
   late WeatherFactory ws;
-  List<Weather> _data = [];
+  late String jsonTags = "semda";
+  //datos
+  Data? data;
+  late double temp = 1.1;
+  late String descripcion = "s/n";
+  late int humedad = 100;
+  late String pais = "s/d";
+  late String icon = "10d";
+  late String cidade = "s/d";
 
   @override
   void initState() {
     ws = WeatherFactory(key, language: Language.PORTUGUESE_BRAZIL);
+
     super.initState();
   }
 
@@ -26,32 +40,47 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         title: const Text('Weather'),
       ),
-      body:  Center(
+      body: Center(
         child: Column(
           children: [
-
-            ElevatedButton(onPressed: queryWeather, child:const Text('press')),
-            Text(_data.toString()),
+          
+            ContainerWidget(
+              pais: pais,
+              humedad: humedad,
+              onPressed: queryWeather,
+              temp: temp,
+              description: descripcion,
+              icon: icon,
+              location: cidade,
+            ),
           ],
         ),
       ),
     );
   }
-  void queryWeather() async {
+
+  queryWeather() async {
     /// Removes keyboard
     FocusScope.of(context).requestFocus(FocusNode());
-       Location location = Location();
+    Location location = Location();
     await location.getCurrentLocation();
 
-    
-
-    Weather weather = await ws.currentWeatherByLocation(location.latitude, location.longitude);
-
-  
+    Weather weather = await ws.currentWeatherByLocation(
+        location.latitude, location.longitude);
 
     setState(() {
-      _data = [weather];
-    
+      temp = weather.temperature!.celsius!;
+      descripcion = weather.weatherDescription!;
+      cidade = weather.areaName!;
+      icon = weather.weatherIcon!;
+      pais = weather.country!;
+      humedad = weather.humidity!.toInt();
+
+      jsonTags = jsonEncode(weather);
+
+      Data.fromMap(jsonDecode(jsonTags));
+
+     
     });
   }
 }

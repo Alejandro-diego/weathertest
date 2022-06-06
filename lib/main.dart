@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weathertest/screen/home.dart';
+
 import 'package:weathertest/screen/home1.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Weather',
       theme: ThemeData.dark(),
       home: const Homepage(),
     );

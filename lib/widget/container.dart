@@ -1,7 +1,8 @@
 import 'dart:core';
-import 'dart:math';
+
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ContainerWidget extends StatelessWidget {
   ContainerWidget(
       {Key? key,
@@ -61,7 +62,7 @@ class ContainerWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                       color: const Color.fromARGB(255, 148, 231, 15)),
                   child: Text(
-                    " TEMP : $temp °",
+                    " TEMP : ${double.parse((temp).toStringAsFixed(2))} °",
                     style: const TextStyle(color: Colors.black),
                   ),
                 ),
@@ -140,17 +141,14 @@ class ContainerWidget extends StatelessWidget {
             ),
             child: ElevatedButton(
               onPressed: onPressed,
-              child: Container(
-
-                height: 200,
-                width: 10,
-                
-                
-                
-               
-                
-                
-                child: Center(child: const Text('Refresh',style: TextStyle(fontSize: 18),))),
+              child: const SizedBox(
+                  height: 200,
+                  width: 10,
+                  child: Center(
+                      child: Text(
+                    'Refresh',
+                    style: TextStyle(fontSize: 18),
+                  ))),
             ),
           )
         ],

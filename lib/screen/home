@@ -68,8 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Uri.parse(
             'http://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&APPID=f3a6f2a2ee5dffc5949de6573c73f232&units=metric'),
         headers: {});
-
-    if (response.statusCode == 200) {
+ if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
       return Data.fromMap(jsonDecode(response.body));
@@ -78,5 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
       // then throw an exception.
       throw Exception('Failed to load album');
     }
+   
   }
 }
