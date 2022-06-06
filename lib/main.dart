@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weathertest/screen/home.dart';
+import 'package:weathertest/screen/home1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: const MyHomePage(),
+      home: const Homepage(),
     );
   }
 }

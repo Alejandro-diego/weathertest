@@ -15,11 +15,11 @@ class Data {
 
   factory Data.fromMap(Map<String, dynamic> map) {
     return Data(
-        pais: map['sys']['country'],
-        temp: map['main']['temp'],
-        name: map['name'],
-        humedad: map['main']['humidity'],
-        icon: map['weather'][0]['icon'],
-        description: map['weather'][0]['description']);
+        pais: map['sys']['country'] ?? "n/d",
+        temp: map['main']['temp']?? 1.1,
+        name: map['name']?? "n/d",
+        humedad: map['main']['humidity'] ??0,
+        icon: map['weather'][0]['icon']?? "n/d",
+        description: map['weather'][0]['description']?? "n/d");
   }
 }

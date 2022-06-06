@@ -1,9 +1,11 @@
 import 'dart:core';
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 class ContainerWidget extends StatelessWidget {
-  const ContainerWidget(
+  ContainerWidget(
       {Key? key,
+      required this.onPressed,
       required this.description,
       required this.icon,
       required this.pais,
@@ -17,6 +19,7 @@ class ContainerWidget extends StatelessWidget {
   final String pais;
   final String description;
   final String icon;
+  dynamic onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -83,31 +86,23 @@ class ContainerWidget extends StatelessWidget {
                           color: const Color.fromARGB(255, 15, 217, 231)),
                       child: Text(
                         " DESCRPITION: $description",
-                        style: const TextStyle(color: Color.fromARGB(255, 22, 21, 21)),
+                        style: const TextStyle(
+                            color: Color.fromARGB(255, 22, 21, 21)),
                       ),
                     ),
-
-                      Container(
-                 width: 50,
-                 height: 50,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          "http://openweathermap.org/img/w/$icon.png",
-                          scale: 1),
+                    Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              "http://openweathermap.org/img/w/$icon.png",
+                              scale: 1),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-
-
-
-
-
-
-
                   ],
                 ),
-              
                 const SizedBox(
                   height: 10,
                 ),
@@ -129,9 +124,6 @@ class ContainerWidget extends StatelessWidget {
                     SizedBox(
                       width: 8,
                     ),
-                    SizedBox(
-                      width: 30,
-                    ),
                   ],
                 ),
               ],
@@ -145,6 +137,20 @@ class ContainerWidget extends StatelessWidget {
             height: 220,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black),
+            ),
+            child: ElevatedButton(
+              onPressed: onPressed,
+              child: Container(
+
+                height: 200,
+                width: 10,
+                
+                
+                
+               
+                
+                
+                child: Center(child: const Text('Refresh',style: TextStyle(fontSize: 18),))),
             ),
           )
         ],
