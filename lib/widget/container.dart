@@ -82,7 +82,7 @@ class ContainerWidget extends StatelessWidget {
                           borderRadius: BorderRadius.circular(5),
                           color: const Color.fromARGB(255, 15, 217, 231)),
                       child: Text(
-                        " DESCRPTION: $description",
+                        " DESCRPITION: $description",
                         style: const TextStyle(color: Color.fromARGB(255, 22, 21, 21)),
                       ),
                     ),
